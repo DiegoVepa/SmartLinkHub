@@ -24,16 +24,16 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Mobile menu button */}
+      {/* Modern Mobile menu button */}
       <button
         type="button"
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 rounded-md bg-card border border-border shadow-sm"
+        className="lg:hidden fixed top-6 left-6 z-50 p-3 rounded-2xl bg-white border border-gray-200 shadow-lg backdrop-blur-lg"
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? (
-          <X className="h-5 w-5" />
+          <X className="h-5 w-5 text-gray-700" />
         ) : (
-          <Menu className="h-5 w-5" />
+          <Menu className="h-5 w-5 text-gray-700" />
         )}
       </button>
 
@@ -45,23 +45,28 @@ export default function Sidebar() {
         />
       )}
 
-      {/* Sidebar */}
+      {/* Modern Sidebar */}
       <div
         className={`
-          fixed lg:static inset-y-0 left-0 z-40 w-64 bg-card border-r border-border
-          transform transition-transform duration-300 ease-in-out
+          fixed lg:static inset-y-0 left-0 z-40 w-72 bg-white/80 backdrop-blur-lg border-r border-gray-200
+          transform transition-all duration-300 ease-in-out shadow-xl
           ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
         `}
       >
         <div className="flex flex-col h-full">
-          {/* Logo/Brand */}
-          <div className="flex items-center h-16 px-6 border-b border-border">
-            <Rocket className="mr-3 h-6 w-6 text-primary" />
-            <h1 className="text-lg font-semibold text-foreground">Switch Dimension</h1>
+          {/* Modern Logo/Brand */}
+          <div className="flex items-center h-20 px-8 border-b border-gray-100">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mr-4">
+              <Rocket className="h-6 w-6 text-white" />
+            </div>
+            <div>
+              <h1 className="text-xl font-bold text-gray-900">TaskHub</h1>
+              <p className="text-xs text-gray-500">Personal Task Manager</p>
+            </div>
           </div>
 
-          {/* Navigation */}
-          <nav className="flex-1 px-4 py-6 space-y-2">
+          {/* Modern Navigation */}
+          <nav className="flex-1 px-6 py-8 space-y-3">
             {navigation.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.href;
@@ -69,27 +74,27 @@ export default function Sidebar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                  className={`flex items-center px-4 py-3 text-sm font-semibold rounded-2xl transition-all duration-200 group ${
                     isActive 
-                      ? 'text-foreground bg-accent' 
-                      : 'text-muted-foreground hover:text-foreground hover:bg-accent'
+                      ? 'text-white bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg' 
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
-                  <Icon className="mr-3 h-4 w-4" />
+                  <Icon className={`mr-4 h-5 w-5 ${isActive ? 'text-white' : 'text-gray-400 group-hover:text-gray-600'}`} />
                   {item.name}
                 </Link>
               );
             })}
           </nav>
 
-          {/* Bottom section with user controls */}
-          <div className="p-4 border-t border-border">
-            <div className="flex items-center justify-between">
+          {/* Modern Bottom section */}
+          <div className="p-6 border-t border-gray-100">
+            <div className="flex items-center justify-between bg-gray-50 rounded-2xl p-4">
               <UserButton 
                 appearance={{
                   elements: {
-                    avatarBox: "w-8 h-8"
+                    avatarBox: "w-10 h-10 rounded-xl"
                   }
                 }}
               />

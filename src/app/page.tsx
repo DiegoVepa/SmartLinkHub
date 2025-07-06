@@ -1,5 +1,5 @@
 import { auth } from "@clerk/nextjs/server";
-import PostManager from "@/components/PostManager";
+import TaskManager from "@/components/TaskManager";
 
 export default async function Dashboard() {
   const { userId } = await auth();
@@ -16,13 +16,8 @@ export default async function Dashboard() {
   }
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold text-foreground">Dashboard</h1>
-        <p className="text-muted-foreground mt-1">Entry point for your app</p>
-      </div>
-      
-      <PostManager />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+      <TaskManager />
     </div>
   );
 }
